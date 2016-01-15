@@ -2,11 +2,11 @@
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-    xmlns:mf="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/stable-v1-WRTODO"
+    xmlns:mf="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/master"
     elementFormDefault="qualified"
 
-    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/stable-v1-WRTODO"
-    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/stable-v1-WRTODO"
+    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/master"
+    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/master"
 >
     <xs:import
         namespace="http://www.w3.org/XML/1998/namespace"
@@ -14,9 +14,9 @@
     />
 
     <xs:import
-        namespace="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/stable-v1-WRTODO"
-        schemaLocation="file://D:/PRIV/Projekty/ewp-specs-api-discovery/manifest.xsd"
-    /> <!-- WRTODO: URL -->
+        namespace="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/master"
+        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-discovery/master/manifest.xsd"
+    />
 
     <xs:annotation>
         <xs:documentation>

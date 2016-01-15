@@ -21,9 +21,7 @@ in the EWP Architecture document first.
 
 ### Location
 
-*WRTODO: Location (URL) of the Registry is not yet determined.*
-
-<!-- WRTODO: Backup domain? -->
+*WRTODO: Final Location (URL) of the Registry Service is not yet determined.*
 
 
 ### Maintainers
@@ -31,8 +29,6 @@ in the EWP Architecture document first.
 Contact us when you want to add your Manifest to the EWP Registry Service:
 
  * **University of Warsaw** - usos@usos.edu.pl
-
-<!-- WRTODO: registry@erasmuswithoutpaper.eu? -->
 
 
 How to use the Registry

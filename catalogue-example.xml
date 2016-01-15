@@ -1,19 +1,22 @@
 <r:catalogue
-    xmlns:r="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/stable-v1-WRTODO"
-    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/stable-v1-WRTODO"
+    xmlns:r="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/master"
+    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/master"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/stable-v1-WRTODO catalogue.xsd"
+    xsi:schemaLocation="
+        https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/master
+        https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-registry/master/catalogue.xsd
+    "
 >
     <r:host>
         <manifest>
             <dev-notes>Registry's EWP Host</dev-notes>
             <apis-implemented>
                 <discovery version="0.0.0">
-                    <url>https://registry.erasmuswithoutpaper.eu/manifest.xml</url>
+                    <url>https://example.com/registry/manifest.xml</url>
                 </discovery>
                 <registry version="0.0.0">
-                    <catalogue-url>https://registry.erasmuswithoutpaper.eu/catalogue.xml</catalogue-url>
+                    <catalogue-url>https://example.com/registry/catalogue.xml</catalogue-url>
                 </registry>
             </apis-implemented>
         </manifest>

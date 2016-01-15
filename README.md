@@ -10,7 +10,7 @@ Registry Service
 
 ### There shall be only one
 
-This documents is placed in the "APIs" section of the EWP documentation, but it
+This document is placed in the "APIs" section of the EWP documentation, but it
 describes an API which you SHOULD NOT implement on your servers. You will be
 only *using* it (as a client).
 
@@ -41,9 +41,9 @@ How to use the Registry
 ### Request and Response
 
 The Registry Service takes no parameters. It simply returns the response at the
-proper URL. The response format is described in the attached [response.xsd]
-(response.xsd) file. You may also review the [response-example.xml]
-(response-example.xml) file for an example of a valid registry response.
+proper URL. The response format is described in the attached [catalogue.xsd]
+(catalogue.xsd) file. You may also review the [catalogue-example.xml]
+(catalogue-example.xml) file for an example of a valid registry response.
 
 
 ### Caching
@@ -54,7 +54,7 @@ proper URL. The response format is described in the attached [response.xsd]
  * The clients MAY use the HTTP headers returned in the Registry response to
    determine the amount of time the Registry response should be cached for (the
    response will contain proper `Cache-Control` and `Expires` headers).
- 
+
  * Clients MAY also choose their own constant value for such expiry, but it
    SHOULD NOT be lower than 5 minutes, and MUST NOT be greater than 12 hours.
    A value of **30 minutes** seems a reasonable recommendation.
@@ -84,7 +84,7 @@ Manifest verification
    the Manifest files from EWP Hosts.
 
  * The Registry Server will validate the manifest files before importing them.
- 
+
  * If either SSL verification or Schema validation fails, the server WILL NOT
    import any new changes. It will attempt to notify the administrator of the
    EWP Host OR a human maintainer of the Registry Server, so that the problem
@@ -104,7 +104,7 @@ enough.
 
 SCHAC identifiers are quite ingenious in their simplicity. They identify HEIs
 by Internet Domain Names registered for them. E.g. `uw.edu.pl` is the SCHAC ID
-for University of Warsaw.
+for the University of Warsaw.
 
 SCHAC identifiers are obviously easy to be acquired by *a human*. We do
 acknowledge however, that its not so easy for machines. Some student

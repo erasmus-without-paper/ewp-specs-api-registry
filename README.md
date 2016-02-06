@@ -115,7 +115,7 @@ Initially, this database will be based on Manifest files, but other sources MAY
 be used later on.
 
 
-[registry-intro]: https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/master/README.md#registry
-[discovery-api]: https://github.com/erasmus-without-paper/ewp-specs-api-discovery/blob/master/README.md
+[registry-intro]: https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/README.md#registry
+[discovery-api]: https://github.com/erasmus-without-paper/ewp-specs-api-discovery/blob/stable-v1/README.md
 [develhub]: http://developers.erasmuswithoutpaper.eu/
-[statuses]: https://github.com/erasmus-without-paper/ewp-specs-management/blob/master/README.md#statuses
+[statuses]: https://github.com/erasmus-without-paper/ewp-specs-management/blob/stable-v1/README.md#statuses

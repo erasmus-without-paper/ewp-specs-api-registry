@@ -2,20 +2,29 @@
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-    xmlns:mf="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/stable-v1"
+    xmlns:mf="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/stable-v3"
+    xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
     elementFormDefault="qualified"
 
     targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/master"
     xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/master"
 >
+
+    <!-- WRTODO: Replace all occurrences of 'master' (in all projects) with 'stable-v1' upon release. -->
+
     <xs:import
         namespace="http://www.w3.org/XML/1998/namespace"
         schemaLocation="http://www.w3.org/2001/03/xml.xsd"
     />
 
     <xs:import
-        namespace="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/stable-v1"
-        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-discovery/stable-v1/manifest.xsd"
+        namespace="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/tree/stable-v3"
+        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-discovery/stable-v3/manifest.xsd"
+    />
+
+    <xs:import
+        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-architecture/stable-v1/common-types.xsd"
+        namespace="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
     />
 
     <xs:annotation>
@@ -30,35 +39,116 @@
     <xs:element name="catalogue">
         <xs:annotation>
             <xs:documentation>
-                The root element of the EWP Registry response.
+                The EWP Registry catalogue response.
+                
+                Most of the data published here is copied from the hosts' manifests, but the
+                data is additionally verified (and portions of it may be modified, removed or
+                transformed). The format is somewhat similar to the format of the manifest
+                files, but different in places.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="host" maxOccurs="unbounded">
+                <xs:element name="host" minOccurs="1" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
                             This element describes a single EWP Host.
-
-                            The main part of this description is the host's manifest (mostly provided by
-                            the host itself), but other elements may be included in the registry response
-                            in the future.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element ref="mf:manifest">
+                            <xs:element ref="ewp:admin-email" minOccurs="0" maxOccurs="unbounded"/>
+                            <xs:element ref="ewp:admin-notes" minOccurs="0" maxOccurs="1"/>
+                            <xs:element ref="mf:apis-implemented" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="institutions-covered" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        A copy of EWP Host's Manifest, as described in the Discovery Manifest API.
+                                        A list of HEIs (Higher Education Institutions) covered by this host. The hosts
+                                        states that all of its implemented institution-related APIs will be able to
+                                        understand requests regarding all institutions listed here.
 
-                                        It MAY differ from the original version hosted on EWP Host's servers. In
-                                        particular, the Registry MUSTs fill all the missing values for the fingerprint
-                                        attributes for all certificate elements. Clients MAY expect these attributes to
-                                        be always present.
+                                        IMPORTANT: A single institution can be covered by multiple hosts. E.g. If you
+                                        are looking for a particular API implementation for a particular institution,
+                                        then you MUST use both of these selectors in your XPath query. Also, keep in
+                                        mind, that a single API may be served in multiple versions, as described here:
+                                        https://github.com/erasmus-without-paper/ewp-specs-architecture/issues/6.
+
+                                        Note, that this element is not the same element as the one used in the
+                                        Discovery Manifest API (it has the same name, but a different namespace and
+                                        contents).
                                     </xs:documentation>
                                 </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="hei-id" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    SCHAC identifier of the HEI. If you don't use SCHAC identifiers, you will
+                                                    probably need to use the attached mapping (see `institutions` element described
+                                                    below).
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
                             </xs:element>
+                            <xs:element name="client-credentials-in-use" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        A list of client credentials used by this host to make requests to
+                                        other EWP hosts in the name of all of the covered institutions.
+
+                                        Note, that this element is not the same element as the one used in the
+                                        Discovery Manifest API (it has the same name, but a different namespace and
+                                        contents).
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="certificate" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    Identifies a client certificate which has been allowed to make requests within
+                                                    the network (in the name of the institutions listed in the adjacent
+                                                    `institutions-covered` element).
+
+                                                    Note, that this element has no content. Clients MUST use the `sha-256`
+                                                    attribute to match certificates.
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                            <xs:complexType>
+                                                <xs:attribute name="sha-256" use="required">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            Certificate's SHA-256 digest.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:string">
+                                                            <xs:pattern value="[0-9a-f]{40}"/>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="institutions" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The list of institutions referenced in the `host` sections above.
+
+                            The list is using the Manifest's XML namespace, but the actual data MAY come
+                            from other sources too.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="mf:hei" minOccurs="0" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

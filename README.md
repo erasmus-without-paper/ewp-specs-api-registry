@@ -77,11 +77,12 @@ stale cached copy of the Registry's response MAY be used instead.
 The purpose of the catalogue served by the Registry Service is to allow the
 clients to answer the following questions:
 
-* **Question 1:** At which URLs and in which versions Echo API is implemented
-  for institution `hei.edu`?
+* **Question 1:** At which URLs and in which versions API X is implemented
+  for institution Y?
 
-  The list of all matching API implementations can be found with an XPath
-  expression similar to this one:
+  Let's assume X is Echo API, and Y's ID is `hei.edu`. The list of all matching
+  API implementations can be found with an XPath expression similar to this
+  one:
 
   `//r:hei-id[text()="hei.edu"]/../../mf:apis-implemented/api-e:echo`
 

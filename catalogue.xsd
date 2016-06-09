@@ -40,7 +40,7 @@
         <xs:annotation>
             <xs:documentation>
                 The EWP Registry catalogue response.
-                
+
                 Most of the data published here is copied from the hosts' manifests, but the
                 data is additionally verified (and portions of it may be modified, removed or
                 transformed). The format is somewhat similar to the format of the manifest
@@ -120,12 +120,12 @@
                                                 <xs:attribute name="sha-256" use="required">
                                                     <xs:annotation>
                                                         <xs:documentation>
-                                                            Certificate's SHA-256 digest.
+                                                            Certificate's SHA-256 digest (in HEX).
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                     <xs:simpleType>
                                                         <xs:restriction base="xs:string">
-                                                            <xs:pattern value="[0-9a-f]{40}"/>
+                                                            <xs:pattern value="[0-9a-f]{64}"/>
                                                         </xs:restriction>
                                                     </xs:simpleType>
                                                 </xs:attribute>

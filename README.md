@@ -84,7 +84,7 @@ clients to answer the following questions:
   API implementations can be found with an XPath expression similar to this
   one:
 
-  `//r:hei-id[text()="hei.edu"]/../../r:apis-implemented/api-e:echo`
+  `//r:hei-id[text()="hei.edu"]/../../r:apis-implemented/e1:echo`
 
   Then, you need look through the list of returned elements and make sure that
   APIs are implemented in the versions you require.
@@ -101,7 +101,7 @@ clients to answer the following questions:
 Namespace context used in the XPath examples above:
 
  * `r` - Registry API response namespace,
- * `api-e` - Echo API manifest-entry namespace.
+ * `e1` - Echo API manifest-entry namespace.
 
 The are many other types of queries which can be run against the catalogue.
 If you think we should include more examples here, please start a new issue for

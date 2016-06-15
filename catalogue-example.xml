@@ -1,9 +1,9 @@
 <catalogue
     xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/stable-v1"
-    xmlns:api-d="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/blob/stable-v4/manifest-entry.xsd"
-    xmlns:api-e="https://github.com/erasmus-without-paper/ewp-specs-api-echo/blob/master/manifest-entry.xsd"
-    xmlns:api-r="https://github.com/erasmus-without-paper/ewp-specs-api-registry/blob/stable-v1/manifest-entry.xsd"
+    xmlns:d4="https://github.com/erasmus-without-paper/ewp-specs-api-discovery/blob/stable-v4/manifest-entry.xsd"
+    xmlns:e1="https://github.com/erasmus-without-paper/ewp-specs-api-echo/blob/stable-v1/manifest-entry.xsd"
     xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
+    xmlns:r1="https://github.com/erasmus-without-paper/ewp-specs-api-registry/blob/stable-v1/manifest-entry.xsd"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
         https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd
@@ -12,8 +12,8 @@
         https://github.com/erasmus-without-paper/ewp-specs-api-discovery/blob/stable-v4/manifest-entry.xsd
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-discovery/stable-v4/manifest.xsd
 
-        https://github.com/erasmus-without-paper/ewp-specs-api-echo/blob/master/manifest-entry.xsd
-        https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-echo/master/manifest-entry.xsd
+        https://github.com/erasmus-without-paper/ewp-specs-api-echo/blob/stable-v1/manifest-entry.xsd
+        https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-echo/stable-v1/manifest-entry.xsd
 
         https://github.com/erasmus-without-paper/ewp-specs-api-registry/blob/stable-v1/manifest-entry.xsd
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-registry/stable-v1/manifest-entry.xsd
@@ -27,12 +27,12 @@
         <ewp:admin-email>registry-service-admin@example.com</ewp:admin-email>
         <ewp:admin-notes>Registry's EWP Host</ewp:admin-notes>
         <apis-implemented>
-            <api-d:discovery version="4.0.0">
-                <api-d:url>https://registry.erasmuswithoutpaper.eu/manifest.xml</api-d:url>
-            </api-d:discovery>
-            <api-r:registry version="1.0.0">
-                <api-r:catalogue-url>https://registry.erasmuswithoutpaper.eu/catalogue.xml</api-r:catalogue-url>
-            </api-r:registry>
+            <d4:discovery version="4.0.0">
+                <d4:url>https://registry.erasmuswithoutpaper.eu/manifest.xml</d4:url>
+            </d4:discovery>
+            <r1:registry version="1.0.0">
+                <r1:catalogue-url>https://registry.erasmuswithoutpaper.eu/catalogue.xml</r1:catalogue-url>
+            </r1:registry>
         </apis-implemented>
         <client-credentials-in-use>
             <certificate sha-256="f47643e26f10fd1e5ffe2c933f0a5e6ccf831d789cd80a12720392e90a8f7d42"/>
@@ -43,15 +43,15 @@
         <ewp:admin-email>admin-or-developer@example.com</ewp:admin-email>
         <ewp:admin-notes>It's not a real manifest. Just an example.</ewp:admin-notes>
         <apis-implemented>
-            <api-d:discovery version="4.0.0">
-                <api-d:url>https://example.com/manifest.xml</api-d:url>
-            </api-d:discovery>
-            <api-e:echo version="0.0.0">
+            <d4:discovery version="4.0.0">
+                <d4:url>https://example.com/manifest.xml</d4:url>
+            </d4:discovery>
+            <e1:echo version="1.0.0">
                 <ewp:admin-email>usually-a-developer@example.com</ewp:admin-email>
                 <ewp:admin-email>some-other-developer@example.com</ewp:admin-email>
                 <ewp:admin-notes>Some notes which might useful for client developers.</ewp:admin-notes>
-                <api-e:url>https://example.com/ewp/echo</api-e:url>
-            </api-e:echo>
+                <e1:url>https://example.com/ewp/echo</e1:url>
+            </e1:echo>
         </apis-implemented>
         <institutions-covered>
             <hei-id>uw.edu.pl</hei-id>

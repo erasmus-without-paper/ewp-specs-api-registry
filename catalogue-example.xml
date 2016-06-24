@@ -10,7 +10,7 @@
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-architecture/stable-v1/common-types.xsd
 
         https://github.com/erasmus-without-paper/ewp-specs-api-discovery/blob/stable-v4/manifest-entry.xsd
-        https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-discovery/stable-v4/manifest.xsd
+        https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-discovery/stable-v4/manifest-entry.xsd
 
         https://github.com/erasmus-without-paper/ewp-specs-api-echo/blob/stable-v1/manifest-entry.xsd
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-echo/stable-v1/manifest-entry.xsd
@@ -49,7 +49,7 @@
             <e1:echo version="1.0.0">
                 <ewp:admin-email>usually-a-developer@example.com</ewp:admin-email>
                 <ewp:admin-email>some-other-developer@example.com</ewp:admin-email>
-                <ewp:admin-notes>Some notes which might useful for client developers.</ewp:admin-notes>
+                <ewp:admin-notes>Some notes which might be useful for client developers.</ewp:admin-notes>
                 <e1:url>https://example.com/ewp/echo</e1:url>
             </e1:echo>
         </apis-implemented>

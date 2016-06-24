@@ -44,15 +44,24 @@ proper URL. The response format is described in the attached [catalogue.xsd]
 ### Caching
 
  * If possible, clients SHOULD cache the registry responses in production
-   environments.
+   environments. That is, clients should query the registry only once in a time
+   and then reuse this response. 
 
  * The clients MAY use the HTTP headers returned in the Registry response to
    determine the amount of time the Registry response should be cached for (the
    response will contain proper `Cache-Control` and `Expires` headers).
-
+ 
  * Clients MAY also choose their own constant value for such expiry, but it
    SHOULD NOT be lower than 1 minute, and MUST NOT be greater than 3 hours.
    A value of **15 minutes** seems a reasonable recommendation.
+
+ * When querying the Registry, clients MAY also utilize web caching techniques,
+   such as [If-Modified-Since]
+   (https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25) or
+   [If-None-Match](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26)
+   HTTP headers. If these request headers are used properly, the Registry will
+   respond with *HTTP 304 Not Modified* status (thus reducing the time you need
+   for receiving and loading the catalogue).
 
 
 ### Is caching safe?
@@ -67,9 +76,9 @@ numbers is also safe.
 
 ### Fallback (backup) cache
 
-Optionally, clients MAY keep the stale copy of the Registry's catalogue as a
-backup. E.g. if the Registry Server cannot be contacted for some reason, a
-stale cached copy of the Registry's response MAY be used instead.
+Clients MAY keep the stale copy of the Registry's catalogue as a backup. E.g.
+if the Registry Server cannot be contacted for some reason, a stale cached copy
+of the Registry's response MAY be used instead (for a limited time).
 
 
 ### Examples of catalogue data extraction
@@ -103,7 +112,7 @@ Namespace context used in the XPath examples above:
  * `r` - Registry API response namespace,
  * `e1` - Echo API manifest-entry namespace.
 
-The are many other types of queries which can be run against the catalogue.
+There are many other types of queries which can be run against the catalogue.
 If you think we should include more examples here, please start a new issue for
 that.
 

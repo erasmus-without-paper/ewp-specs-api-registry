@@ -9,6 +9,9 @@
         https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-architecture/stable-v1/common-types.xsd
 
+        https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/stable-v1
+        https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-registry/stable-v1/catalogue.xsd
+
         https://github.com/erasmus-without-paper/ewp-specs-api-discovery/blob/stable-v4/manifest-entry.xsd
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-discovery/stable-v4/manifest-entry.xsd
 
@@ -17,9 +20,6 @@
 
         https://github.com/erasmus-without-paper/ewp-specs-api-registry/blob/stable-v1/manifest-entry.xsd
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-registry/stable-v1/manifest-entry.xsd
-
-        https://github.com/erasmus-without-paper/ewp-specs-api-registry/tree/stable-v1
-        https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-registry/stable-v1/catalogue.xsd
     "
 >
     <host>
@@ -31,7 +31,7 @@
                 <d4:url>https://registry.erasmuswithoutpaper.eu/manifest.xml</d4:url>
             </d4:discovery>
             <r1:registry version="1.0.0">
-                <r1:catalogue-url>https://registry.erasmuswithoutpaper.eu/catalogue.xml</r1:catalogue-url>
+                <r1:catalogue-url>https://registry.erasmuswithoutpaper.eu/catalogue-v1.xml</r1:catalogue-url>
             </r1:registry>
         </apis-implemented>
         <client-credentials-in-use>
@@ -62,8 +62,8 @@
     </host>
     <institutions>
         <hei id="uw.edu.pl">
-            <other-id type="pic">999572294</other-id>
             <other-id type="erasmus">PL WARSZAW01</other-id>
+            <other-id type="pic">999572294</other-id>
             <name xml:lang="en">University of Warsaw</name>
         </hei>
     </institutions>

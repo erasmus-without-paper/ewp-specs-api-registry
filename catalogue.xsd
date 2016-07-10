@@ -199,6 +199,11 @@
                             primary HEI identifier, but manifest authors are encouraged to provide all
                             identifiers they can think of. (Otherwise, other EWP Hosts may not be able to
                             recognize their HEIs.)
+
+                            Note that there can be multiple IDs given, even within a single type. This
+                            won't happen often, but you should be aware of this. It is safer for the
+                            Registry to include both conflicting values (as they were found in the manifest
+                            files), than pick one at random.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -220,7 +225,7 @@
                                                             <xs:documentation>
                                                                 A previously used SCHAC identifier. Manifest authors MUST provide all SCHAC
                                                                 identifiers their HEI have used in the past.
-        
+
                                                                 https://github.com/erasmus-without-paper/ewp-specs-api-discovery/issues/4
                                                             </xs:documentation>
                                                         </xs:annotation>
@@ -229,7 +234,7 @@
                                                         <xs:annotation>
                                                             <xs:documentation>
                                                                 PIC identifier.
-        
+
                                                                 https://ec.europa.eu/research/participants/portal/desktop/en/organisations/register.html
                                                             </xs:documentation>
                                                         </xs:annotation>
@@ -264,7 +269,13 @@
                 <xs:element name="name" type="ewp:StringWithOptionalLang" minOccurs="1" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
-                            The name of the institution. May be provided in multiple languages.
+                            The name of the institution. Multiple values may be provided, and in multiple
+                            languages.
+
+                            Note that there can be multiple names given even *for the same language*. This
+                            won't happen often, but you should be aware of this. It is safer for the
+                            Registry to include both such conflicting values (as they were found in the
+                            manifest files), than pick one at random.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>

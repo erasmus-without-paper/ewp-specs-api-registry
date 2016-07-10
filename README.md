@@ -45,12 +45,12 @@ proper URL. The response format is described in the attached [catalogue.xsd]
 
  * If possible, clients SHOULD cache the registry responses in production
    environments. That is, clients should query the registry only once in a time
-   and then reuse this response. 
+   and then reuse this response.
 
  * The clients MAY use the HTTP headers returned in the Registry response to
    determine the amount of time the Registry response should be cached for (the
    response will contain proper `Cache-Control` and `Expires` headers).
- 
+
  * Clients MAY also choose their own constant value for such expiry, but it
    SHOULD NOT be lower than 1 minute, and MUST NOT be greater than 3 hours.
    A value of **15 minutes** seems a reasonable recommendation.
@@ -81,22 +81,26 @@ if the Registry Server cannot be contacted for some reason, a stale cached copy
 of the Registry's response MAY be used instead (for a limited time).
 
 
-### Examples of catalogue data extraction
+<a name='queries'></a>
+
+### XPath queries
 
 The purpose of the catalogue served by the Registry Service is to allow the
 clients to answer the following questions:
 
-* **Question 1:** At which URLs and in which versions API X is implemented
-  for institution Y?
+* **Question 1:** At which URLs and in which versions API X is implemented for
+  institution Y?
 
-  Let's assume X is Echo API, and Y's ID is `hei.edu`. The list of all matching
-  API implementations can be found with an XPath expression similar to this
-  one:
+  Let's assume that you are searching for implementations of Echo API `1.x.x`,
+  and Y's ID is `hei.edu`. The list of all matching API implementations can be
+  found with an XPath expression similar to this one:
 
   `//r:hei-id[text()="hei.edu"]/../../r:apis-implemented/e1:echo`
 
   Then, you need look through the list of returned elements and make sure that
-  APIs are implemented in the versions you require.
+  APIs are implemented in the versions you require. Usually you will want the
+  entry with the highest `version` attribute (the entries in the Registry
+  response are not ordered, you will need to order them yourself).
 
 * **Question 2:** I have received a HTTPS request signed by a client
   certificate `cert`. Data of which HEIs is this client privileged to access?
@@ -107,14 +111,23 @@ clients to answer the following questions:
 
   `//r:certificate[@sha-256="<your-digest>"]/../../r:institutions-covered/r:hei-id`
 
+  Note, that the IDs returned by this query are **not necessarily unique**.
+
 Namespace context used in the XPath examples above:
 
  * `r` - Registry API response namespace,
- * `e1` - Echo API manifest-entry namespace.
+ * `e1` - Echo API `stable-v1` manifest-entry namespace.
 
 There are many other types of queries which can be run against the catalogue.
 If you think we should include more examples here, please start a new issue for
 that.
+
+
+### Support libraries
+
+There might be some client libraries implemented for accessing the Registry
+Service response. If there is one for your language, then - perhaps - you won't
+need to implement it yourself. Check out the [EWP Developers][develhub] page.
 
 
 How is the registry updated?
@@ -131,20 +144,20 @@ the majority of it is being fetched from the [manifest.xml files]
    the Manifest files from EWP Hosts.
 
  * The Registry Server will validate the manifest files before importing them.
-   This includes the XML Schema validation, and some confirming that any other
-   specific constraints are kept, e.g. related to the security of certificates
-   used. Note, that each EWP Host can be a subject to additional constraints
-   specific to its own (e.g. EWP Hosts in Poland might be required to cover
-   institutions with `.pl` SCHAC ID suffix only).
+   This includes the XML Schema validation, and meeting some other specific
+   constraints (e.g. related to the security of certificates used). Note, that
+   each EWP Host can be a subject to additional constraints specific to its own
+   (e.g. EWP Hosts in Poland might be required to cover institutions with `.pl`
+   SCHAC ID suffix only).
 
- * If validation fails, the server WILL NOT import the new manifest file (and
-   will keep serving the data from the older one). It will also attempt to
-   notify the administrator of the EWP Host OR a human maintainer of the
-   Registry Server, so that the problem will be noticed.
+ * If validation fails, the registry MAY attempt to import some of the data (the
+   parts that are valid), but is NOT REQUIRED to. The registry MUST attempt to
+   notify the maintainers of the faulty manifest file, and/or the maintainers of the
+   Registry Service itself, so that the problem will be noticed.
 
  * The Registry Service will understand Discovery Manifest files formatted
    according to Discovery API [specifications][discovery-api-releases] in
-   versions `3.1.0` **and higher**.
+   versions `4.0.0` **and higher**.
 
 
 ### Adding a new manifest file

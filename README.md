@@ -168,6 +168,8 @@ maintainer can be found on the [Registry Service's welcome page]
 (https://registry.erasmuswithoutpaper.eu/).
 
 
+<a name="schac-ids"></a>
+
 SCHAC identifiers
 -----------------
 

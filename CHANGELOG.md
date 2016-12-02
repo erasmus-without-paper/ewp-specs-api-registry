@@ -4,6 +4,15 @@ Release notes
 This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
+1.1.0
+-----
+
+* Extracted `<other-id>`'s type (`OtherHeiId`), so that it can now be reused in
+  other APIs (in particular, the Institutions API).
+* Added `euc` to the `<other-id>`'s `type` attribute's enumeration (Erasmus
+  University Charter number).
+
+
 1.0.2
 -----
 

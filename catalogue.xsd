@@ -276,6 +276,13 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:enumeration>
+                                    <xs:enumeration value="euc">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                Erasmus University Charter number.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
                                 </xs:restriction>
                             </xs:simpleType>
                             <xs:simpleType>

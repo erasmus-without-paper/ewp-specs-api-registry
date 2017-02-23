@@ -4,6 +4,12 @@ Release notes
 This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
+1.1.1
+-----
+
+* Updated example.
+
+
 1.1.0
 -----
 

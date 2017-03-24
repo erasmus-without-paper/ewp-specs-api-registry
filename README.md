@@ -36,9 +36,10 @@ How to use the Registry
 ### Request and Response
 
 The Registry Service takes no parameters. It simply returns the response at the
-proper URL. The response format is described in the attached [catalogue.xsd]
-(catalogue.xsd) file. You may also review the [catalogue-example.xml]
-(catalogue-example.xml) file for an example of a valid registry response.
+proper URL. The response format is described in the attached
+[catalogue.xsd](catalogue.xsd) file. You may also review the
+[catalogue-example.xml](catalogue-example.xml) file for an example of a valid
+registry response.
 
 
 ### Caching
@@ -56,8 +57,8 @@ proper URL. The response format is described in the attached [catalogue.xsd]
    A value of **15 minutes** seems a reasonable recommendation.
 
  * When querying the Registry, clients MAY also utilize web caching techniques,
-   such as [If-Modified-Since]
-   (https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25) or
+   such as
+   [If-Modified-Since](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25) or
    [If-None-Match](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26)
    HTTP headers. If these request headers are used properly, the Registry will
    respond with *HTTP 304 Not Modified* status (thus reducing the time you need
@@ -134,8 +135,8 @@ How is the registry updated?
 ----------------------------
 
 Data served by the Registry Service can be acquired from various sources, but
-the majority of it is being fetched from the [manifest.xml files]
-[discovery-api] served by all the EWP partners.
+the majority of it is being fetched from the
+[manifest.xml files][discovery-api] served by all the EWP partners.
 
 
 ### How manifest files are fetched
@@ -164,8 +165,8 @@ the majority of it is being fetched from the [manifest.xml files]
 
 Contact Registry Service maintainers when you want to add your Manifest to the
 EWP Registry Service. The email address of the current Registry Service
-maintainer can be found on the [Registry Service's welcome page]
-(https://registry.erasmuswithoutpaper.eu/).
+maintainer can be found on the
+[Registry Service's welcome page](https://registry.erasmuswithoutpaper.eu/).
 
 
 <a name="schac-ids"></a>

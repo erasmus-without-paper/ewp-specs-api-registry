@@ -98,17 +98,19 @@ clients to answer the following questions:
 
   `//r:hei-id[text()="hei.edu"]/../../r:apis-implemented/e1:echo`
 
-  Then, you need look through the list of returned elements and make sure that
-  APIs are implemented in the versions you require. Usually you will want the
-  entry with the highest `version` attribute (the entries in the Registry
-  response are not ordered, you will need to order them yourself).
+  Then, you need look through the list of returned elements and:
+
+  - Make sure that APIs are implemented in the versions you require. Usually
+    you will want the entry with the highest `version` attribute (the entries
+    in the Registry response are not ordered, you will need to order them
+    yourself).
 
 * **Question 2:** I have received a HTTPS request signed by a client
   certificate `cert`. Data of which HEIs is this client privileged to access?
 
   Determine the certificate's SHA-256 fingerprint first (e.g.
   `DigestUtils.sha256Hex(cert.getEncoded())` if you're using Java). Then, you
-  can use an XPath expression similar to this one (note, that IDs may repeat):
+  can use an XPath expression similar to this one:
 
   `//r:certificate[@sha-256="<your-digest>"]/../../r:institutions-covered/r:hei-id`
 

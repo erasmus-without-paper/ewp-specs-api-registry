@@ -5,6 +5,12 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.1.3
+-----
+
+* Updated example.
+
+
 1.1.2
 -----
 

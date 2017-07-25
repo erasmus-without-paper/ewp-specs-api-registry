@@ -5,6 +5,13 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.1.4
+-----
+
+* More explicit security rules (add links to existing documents on security
+  methods).
+
+
 1.1.3
 -----
 

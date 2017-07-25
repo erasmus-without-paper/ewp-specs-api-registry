@@ -41,6 +41,10 @@ proper URL. The response format is described in the attached
 [catalogue-example.xml](catalogue-example.xml) file for an example of a valid
 registry response.
 
+Security is based on [server certificate validation][srvauth-tlscert]. The
+registry [does not validate the client][cliauth-none] (all clients are allowed
+to access the catalogue anonymously).
+
 
 ### Caching
 
@@ -203,3 +207,5 @@ be used later on.
 [discovery-api-releases]: https://github.com/erasmus-without-paper/ewp-specs-api-discovery/releases
 [develhub]: http://developers.erasmuswithoutpaper.eu/
 [statuses]: https://github.com/erasmus-without-paper/ewp-specs-management/blob/stable-v1/README.md#statuses
+[cliauth-none]: https://github.com/erasmus-without-paper/ewp-specs-sec-cliauth-none
+[srvauth-tlscert]: https://github.com/erasmus-without-paper/ewp-specs-sec-srvauth-tlscert

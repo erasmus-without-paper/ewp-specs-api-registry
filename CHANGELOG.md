@@ -5,6 +5,13 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.1.5
+-----
+
+* Updated `catalogue-example.xml` to be consistent with Discovery API's most
+  recent `manifest-example.xml`.
+
+
 1.1.4
 -----
 

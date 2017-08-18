@@ -96,11 +96,11 @@ clients to answer the following questions:
 * **Question 1:** At which URLs and in which versions API X is implemented for
   institution Y?
 
-  Let's assume that you are searching for implementations of Echo API `1.x.x`,
+  Let's assume that you are searching for implementations of Echo API `2.x.x`,
   and Y's ID is `hei.edu`. The list of all matching API implementations can be
   found with an XPath expression similar to this one:
 
-  `//r:hei-id[text()="hei.edu"]/../../r:apis-implemented/e1:echo`
+  `//r:hei-id[text()="hei.edu"]/../../r:apis-implemented/e2:echo`
 
   Then, you need look through the list of returned elements and:
 
@@ -123,7 +123,7 @@ clients to answer the following questions:
 Namespace context used in the XPath examples above:
 
  * `r` - Registry API response namespace,
- * `e1` - Echo API `stable-v1` manifest-entry namespace.
+ * `e2` - Echo API's `stable-v2` manifest-entry namespace.
 
 There are many other types of queries which can be run against the catalogue.
 If you think we should include more examples here, please start a new issue for

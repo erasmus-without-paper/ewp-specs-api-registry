@@ -5,6 +5,16 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.2.0
+-----
+
+* New element under `<client-credentials-in-use>`: `<rsa-public-key>`.
+* New `<host>` section: `<server-credentials-in-use>`.
+* Updated `manifest-example.xml`. Makes use of the newly introduced elements,
+  and HTTP Signature authentication methods.
+* Promote version 2 of the Echo API in the examples.
+
+
 1.1.5
 -----
 

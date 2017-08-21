@@ -109,6 +109,13 @@ clients to answer the following questions:
     in the Registry response are not ordered, you will need to order them
     yourself).
 
+  - Make sure that the API supports authentication and security methods you
+    are planning to use. If this API follows the rules of [Authentication and
+    Security document, Version 2][sec-intro-v2], then it's API entry will most
+    often contain an explicit list of supported methods. (If you want, then you
+    may also include your own list of supported methods directly in your XPath
+    query.)
+
 * **Question 2:** I have received a HTTPS request signed by a client
   certificate `cert`. Data of which HEIs is this client privileged to access?
 
@@ -116,9 +123,36 @@ clients to answer the following questions:
   `DigestUtils.sha256Hex(cert.getEncoded())` if you're using Java). Then, you
   can use an XPath expression similar to this one:
 
-  `//r:certificate[@sha-256="<your-digest>"]/../../r:institutions-covered/r:hei-id`
+  `//r:client-credentials-in-use/r:certificate[@sha-256="<your-digest>"]/../../r:institutions-covered/r:hei-id`
 
   Note, that the IDs returned by this query are **not necessarily unique**.
+
+* **Question 3:** I have received a request signed with HTTP Signature with
+  a public key `X`. Data of which HEIs is this client privileged to access?
+
+  Calculate the SHA-256 fingerprint of `X` first (similar as in question 2).
+  Then, you can use an XPath expression similar to this one:
+
+  `//r:client-credentials-in-use/r:rsa-public-key[@sha-256="<your-digest>"]/../../r:institutions-covered/r:hei-id`
+
+  Note, that the IDs returned by this query are **not necessarily unique**.
+
+* **Question 4:** I don't trust [regular TLS Server
+  Authentication][srvauth-tlscert] and I want to [authenticate the server via
+  HTTP signature][srvauth-httpsig]. I have already found the API entry `X`,
+  extracted the endpoint's URL `Y` from it, and have received the server's
+  response which has been signed with public key `Z`. How can I verify if `Z`
+  is the correct key with which `Y`'s responses should have been signed with?
+
+  Calculate the SHA-256 fingerprint of `Z` first (similar as in question 2).
+  Then, you can use a XPath expression similar to the one below. Note, that
+  this expression is **relative to `X`** (it is important to have a single,
+  specific element `X` determined before you continue):
+
+  `./../../r:server-credentials-in-use/r:rsa-public-key[@sha-256="<your-digest>"]`
+
+  If such element exists, then your response has been properly signed by the
+  trusted server.
 
 Namespace context used in the XPath examples above:
 
@@ -209,3 +243,5 @@ be used later on.
 [statuses]: https://github.com/erasmus-without-paper/ewp-specs-management/blob/stable-v1/README.md#statuses
 [cliauth-none]: https://github.com/erasmus-without-paper/ewp-specs-sec-cliauth-none
 [srvauth-tlscert]: https://github.com/erasmus-without-paper/ewp-specs-sec-srvauth-tlscert
+[srvauth-httpsig]: https://github.com/erasmus-without-paper/ewp-specs-sec-srvauth-httpsig
+[sec-intro-v2]: https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/stable-v2

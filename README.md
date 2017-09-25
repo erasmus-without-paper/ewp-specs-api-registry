@@ -128,31 +128,51 @@ clients to answer the following questions:
   Note, that the IDs returned by this query are **not necessarily unique**.
 
 * **Question 3:** I have received a request signed with HTTP Signature with
-  a public key `X`. Data of which HEIs is this client privileged to access?
+  `keyId` equal to `X`. How do I retrieve the actual public key, which I can
+  later use to validate the request's signature?
 
-  Calculate the SHA-256 fingerprint of `X` first (similar as in question 2).
-  Then, you can use an XPath expression similar to this one:
+  You can use an XPath expression similar to this one:
 
-  `//r:client-credentials-in-use/r:rsa-public-key[@sha-256="<your-digest>"]/../../r:institutions-covered/r:hei-id`
+  `//r:binaries/r:rsa-public-key[@sha-256="X"]`
+
+  The result can be empty - in this case you should not trust the sender
+  (because his key is unknown). If found, then its content will contain
+  base64-encoded array of bytes with the encoded RSA public key.
+
+  Note, that retrieving the key doesn't tell you anything about the permissions
+  of the sender. It only allows you to validate the sender's signature.
+
+* **Question 4:** I have received a request signed with HTTP Signature with
+  `keyId` equal to `X`. I have already validated the signature (as described in
+  question 3), so I know that the sender is in possession of the private part
+  of the key-pair. How do I retrieve the list of HEIs who's data is this client
+  privileged to access?
+
+  You can use an XPath expression similar to this one:
+
+  `//r:client-credentials-in-use/r:rsa-public-key[@sha-256="X"]/../../r:institutions-covered/r:hei-id`
 
   Note, that the IDs returned by this query are **not necessarily unique**.
 
-* **Question 4:** I don't trust [regular TLS Server
+* **Question 5:** I don't trust [regular TLS Server
   Authentication][srvauth-tlscert] and I want to [authenticate the server via
   HTTP signature][srvauth-httpsig]. I have already found the API entry `X`,
   extracted the endpoint's URL `Y` from it, and have received the server's
-  response which has been signed with public key `Z`. How can I verify if `Z`
-  is the correct key with which `Y`'s responses should have been signed with?
+  response which has been signed with `keyId=Z`. I have already validated the
+  signature (as described in question 3), so I know that the sender is in
+  possession of the private part of the key-pair. How can I verify if `Z` is
+  the correct key with which `Y`'s responses should have been signed with?
 
-  Calculate the SHA-256 fingerprint of `Z` first (similar as in question 2).
-  Then, you can use a XPath expression similar to the one below. Note, that
-  this expression is **relative to `X`** (it is important to have a single,
-  specific element `X` determined before you continue):
+  You can use a XPath expression similar to the one below. This expression is
+  **relative to `X`** (it is important to have a single, specific element `X`
+  determined before you continue):
 
   `./../../r:server-credentials-in-use/r:rsa-public-key[@sha-256="<your-digest>"]`
 
-  If such element exists, then your response has been properly signed by the
-  trusted server.
+  If such element exists, then this response has been properly signed. If it
+  doesn't exist, then something's wrong - this key has not been designated for
+  signing responses of this particular API endpoint (so there's a chance
+  someone is trying a spoofing attack on you).
 
 Namespace context used in the XPath examples above:
 

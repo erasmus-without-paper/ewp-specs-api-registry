@@ -5,6 +5,12 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.3.1
+-----
+
+* Updated `catalogue-example.xml`.
+
+
 1.3.0
 -----
 

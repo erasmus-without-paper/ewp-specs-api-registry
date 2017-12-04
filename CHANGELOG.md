@@ -5,6 +5,14 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.3.2
+-----
+
+* Updated `catalogue-example.xml`.
+* Stated explicitly, the the Registry will support both `4.x.x` and `5.x.x`
+  versions of the Discovery Manifest API.
+
+
 1.3.1
 -----
 

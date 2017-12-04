@@ -218,7 +218,7 @@ the majority of it is being fetched from the
 
  * The Registry Service will understand Discovery Manifest files formatted
    according to Discovery API [specifications][discovery-api-releases] in
-   versions `4.0.0` **and higher**.
+   versions `4.0.0` **and higher** (this includes `5.x.x`).
 
 
 ### Adding a new manifest file

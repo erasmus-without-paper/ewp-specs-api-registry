@@ -403,7 +403,12 @@
                                     <xs:enumeration value="euc">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                Erasmus University Charter number.
+                                                Erasmus Charter number (EUC/ECHE/etc.)
+
+                                                This MAY contain both EUC numbers (Erasmus University Charter) or ECHE numbers
+                                                (Erasmus Charter for Higher Education). In the future, it also MAY contain
+                                                other similar identifiers, if the European Commission decides to replace ECHE
+                                                numbers with such.
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:enumeration>

@@ -5,6 +5,12 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.4.1
+-----
+
+* Catalogue example updated to match the Registry Service's output exactly.
+
+
 1.4.0
 -----
 
@@ -12,7 +18,7 @@ starting from its first released version.
 
   - Introduced the new `erasmus-charter` value to the enumeration.
   - The `euc` value is now deprecated (in favor of `erasmus-charter`).
-  
+
   See the specs, and
   [this thread](https://github.com/erasmus-without-paper/ewp-specs-api-registry/issues/3)
   for more information.

@@ -5,6 +5,19 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.4.0
+-----
+
+* Changes in `type` attribute of the `OtherHeiId` `complexType`:
+
+  - Introduced the new `erasmus-charter` value to the enumeration.
+  - The `euc` value is now deprecated (in favor of `erasmus-charter`).
+  
+  See the specs, and
+  [this thread](https://github.com/erasmus-without-paper/ewp-specs-api-registry/issues/3)
+  for more information.
+
+
 1.3.2
 -----
 

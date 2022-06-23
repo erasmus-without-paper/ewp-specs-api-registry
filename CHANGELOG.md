@@ -5,6 +5,17 @@ This document describes all the changes made to the *Registry API* document,
 starting from its first released version.
 
 
+1.5.0
+-----
+
+* Added admin-provider element (introduced in Discovery 6.0.0).
+
+  See [this thread](https://github.com/erasmus-without-paper/ewp-specs-api-discovery/issues/19)
+  for more information.
+
+* Updated catalogue example file.
+
+
 1.4.1
 -----
 
